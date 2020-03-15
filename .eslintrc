@@ -1,0 +1,11 @@
+{ 
+    "extends": "react-native-wcandillon", 
+    "rules": {
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "@typescript-eslint/no-use-before-define": "off",
+        "prettier/prettier": ["error", { "singleQuote": true }]
+    }
+} 
