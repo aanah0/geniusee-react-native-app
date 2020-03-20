@@ -13,11 +13,11 @@
 - бек не возвращает нигде userId, поэтому таски всегда создаются для юзера с `userId = 1`
 
 ## TODO
- [ ] типизация apollo
- [ ] доскрол, когда добавляется новая таска
- [ ] `apollo-cache-persist`
- [ ] синхронизация с беком действий, которые были сделаны в offline mode
- [ ] перевести анимацию при добавлении таски на `reanimated`
+-  типизация apollo
+- доскрол, когда добавляется новая таска
+- `apollo-cache-persist`
+- синхронизация с беком действий, которые были сделаны в offline mode
+- перевести анимацию при добавлении таски на `reanimated`
  
  ## Затраченное время
  ![Image of Time tracker](https://raw.github.com/aanah0/geniusee-react-native-app/master/assets/time-track.jpg)
