@@ -25,23 +25,16 @@ import { TaskItem } from './src/components/common/TMTaskItem';
 
 const isIOS = Platform.OS === 'ios';
 
+type AuthFunctionInContext = {
+  userName: string;
+  password: string;
+};
+
 type State = {
   userToken: string | null;
   setUserToken: React.Dispatch<React.SetStateAction<string | null>>;
-  signIn({
-    userName,
-    password
-  }: {
-    userName: string;
-    password: string;
-  }): Promise<void>;
-  signUp({
-    userName,
-    password
-  }: {
-    userName: string;
-    password: string;
-  }): Promise<void>;
+  signIn({ userName, password }: AuthFunctionInContext): Promise<void>;
+  signUp({ userName, password }: AuthFunctionInContext): Promise<void>;
 };
 
 export type RootStackParamList = {

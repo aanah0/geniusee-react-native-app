@@ -17,33 +17,9 @@ import {
 } from 'native-base';
 import { RouteProp } from '@react-navigation/native';
 import { useMutation } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
 import { TaskItem } from '../common/TMTaskItem';
 import { RootStackParamList } from '../../../App';
-
-const EDIT_TASK = gql`
-  mutation MyMutation(
-    $title: String!
-    $description: String!
-    $id: Int!
-    $isDone: Boolean!
-  ) {
-    updateTaskById(
-      input: {
-        taskPatch: { title: $title, description: $description, isDone: $isDone }
-        id: $id
-      }
-    ) {
-      task {
-        description
-        createdAt
-        id
-        isDone
-        title
-      }
-    }
-  }
-`;
+import { EDIT_TASK } from '../../contstants/gql';
 
 type EditTaskScreenNavigationProp = StackNavigationProp<
   RootStackParamList,

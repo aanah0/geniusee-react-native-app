@@ -1,24 +1,9 @@
 /* eslint-disable max-len */
 import React, { useContext, useEffect } from 'react';
-import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 import { TaskItem } from '../components/common/TMTaskItem';
 import { AuthContext } from '../../App';
-
-export const GET_TASKS = gql`
-  query MyQuery {
-    allTasks {
-      nodes {
-        createdAt
-        description
-        id
-        isDone
-        title
-        userId
-      }
-    }
-  }
-`;
+import { GET_TASKS } from '../contstants/gql';
 
 type State = {
   isLoading: boolean;
@@ -44,7 +29,7 @@ function TasksProvider({ children }: TasksProviderProps) {
         }
       }
     }
-  }, [error]);
+  }, [error, authProvider]);
 
   return (
     <TasksStateContext.Provider

@@ -21,7 +21,7 @@ export default function TasksList({
     <FlatList
       removeClippedSubviews
       ref={scroll}
-      style={{ flex: 1, marginBottom: 50 }}
+      style={{ flex: 1, marginBottom: 60 }}
       refreshing={state.isLoading}
       onRefresh={state.refetch}
       data={state.list}

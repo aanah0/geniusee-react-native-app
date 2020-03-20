@@ -30,6 +30,9 @@ export default function SignInScreen() {
             <Input
               blurOnSubmit={false}
               onSubmitEditing={() => {
+                // Знаю что можно написать и passwordInputRef.current?._root?.focus
+                // prettier не понимает такого оператора в моей версии, надо обновить,
+                // но тратить время на это не хотелось)
                 if (
                   passwordInputRef &&
                   passwordInputRef.current &&
