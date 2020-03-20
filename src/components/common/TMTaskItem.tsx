@@ -1,21 +1,7 @@
 import React from 'react';
 import { Body, CheckBox, ListItem, Text } from 'native-base';
-import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
-
-const TOGGLE_IS_DONE = gql`
-  mutation MyMutation($id: Int!, $isDone: Boolean!) {
-    updateTaskById(input: { taskPatch: { isDone: $isDone }, id: $id }) {
-      task {
-        description
-        createdAt
-        id
-        isDone
-        title
-      }
-    }
-  }
-`;
+import { TOGGLE_IS_DONE } from '../../contstants/gql';
 
 export interface TaskItem {
   createdAt: string;
