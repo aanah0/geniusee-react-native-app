@@ -18,6 +18,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { Button } from 'native-base';
+import { persistCache } from 'apollo-cache-persist';
 import SignInScreen from './src/components/auth/SignInScreen';
 import HomeScreen from './src/components/home/HomeScreen';
 import EditTask from './src/components/home/EditTaskScreen';
@@ -82,7 +83,18 @@ function App() {
         authorization: `Bearer ${userToken}`
       }
     });
-    setClient(clientWithToken);
+    const initData = {};
+    cache.writeData({ data: initData });
+    persistCache({
+      cache,
+      storage: AsyncStorage,
+      trigger: 'write'
+    }).then(() => {
+      clientWithToken.onResetStore(async () =>
+        cache.writeData({ data: initData })
+      );
+      setClient(clientWithToken);
+    });
   }, [userToken]);
 
   if (!isReady || !client) {
