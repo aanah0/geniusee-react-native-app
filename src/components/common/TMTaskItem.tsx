@@ -23,13 +23,28 @@ interface TMTaskItemProps extends TaskItem {
 }
 
 const TMTaskItem = React.memo(
-  ({ isDone, title, id, onPress }: TMTaskItemProps) => {
+  ({ isDone, createdAt, description, title, id, onPress }: TMTaskItemProps) => {
     const [toggle] = useMutation(TOGGLE_IS_DONE, {
       variables: {
         isDone: !isDone,
         id
       },
-      optimisticResponse: true
+      optimisticResponse: () => {
+        return {
+          __typename: 'Mutation',
+          updateTaskById: {
+            __typename: 'TasksConnection',
+            task: {
+              __typename: 'Task',
+              id,
+              isDone: !isDone,
+              createdAt,
+              description,
+              title
+            }
+          }
+        };
+      }
     });
 
     return (
